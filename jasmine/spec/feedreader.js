@@ -111,7 +111,6 @@ $(function() {
        beforeAll(function(done){
          loadFeed(1, function(){
            firstEntry = $('.entry h2:first').text(); // save first entry
-           done();
 
            loadFeed(2, function(){
              secondEntry = $('.entry h2:first').text(); // get first entry now
