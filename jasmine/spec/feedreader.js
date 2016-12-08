@@ -108,16 +108,19 @@ $(function() {
        var firstEntry;
        var secondEntry;
 
-       beforeEach(function(done){
-         firstEntry = $('.entry h2:first').text(); // save first entry
-
+       beforeAll(function(done){
          loadFeed(1, function(){
+           firstEntry = $('.entry h2:first').text(); // save first entry
            done();
+
+           loadFeed(2, function(){
+             secondEntry = $('.entry h2:first').text(); // get first entry now
+             done();
+           });
          });
        });
 
        it('- ensures when a new feed is loaded by the loadFeed function that the content actually changes', function(done){
-         secondEntry = $('.entry h2:first').text(); // get first entry now
          expect(firstEntry).not.toEqual(secondEntry);
          done();
        });
